@@ -1,153 +1,85 @@
-import Link from "next/link";
+"use client";
+
+import { ConversationProvider } from "@elevenlabs/react";
+import TripPlanner from "@/components/TripPlanner";
+import { Compass, Sparkles, Plane, Navigation, Globe } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#202124] text-white font-sans">
+    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-brand-500/30">
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
-        <header className="mb-6 flex flex-col gap-4 rounded-3xl bg-[#303134]/80 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#5f6368] text-xl">🎥</div>
+        
+        {/* Header */}
+        <header className="mb-12 flex flex-col gap-4 rounded-[40px] bg-gray-900/80 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)] backdrop-blur-3xl sm:flex-row sm:items-center sm:justify-between border border-white/5 animate-in slide-in-from-top-8 duration-700">
+          <div className="flex items-center gap-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-[20px] bg-brand-500 text-3xl shadow-lg shadow-brand-500/20 rotate-3">
+              <Compass size={32} className="text-white" />
+            </div>
             <div>
-              <p className="text-xs uppercase tracking-[0.24em] text-zinc-400">Meet</p>
-              <h1 className="text-2xl font-semibold">Myslef Lakbay</h1>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-brand-500 font-bold">AI Trip Planner</span>
+                <span className="h-1 w-1 rounded-full bg-zinc-600"></span>
+                <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 font-bold">Travel Lykke</span>
+              </div>
+              <h1 className="text-3xl font-bold tracking-tight text-white">Myself Maya</h1>
             </div>
           </div>
-          <div className="flex flex-col gap-2 rounded-2xl bg-[#3c4043] p-3 text-sm text-zinc-300 sm:flex-row sm:items-center">
-            <span className="font-medium text-white">I’m a Philippines travel expert</span>
-            <span className="rounded-full bg-[#5f6368] px-3 py-1 text-xs uppercase tracking-[0.18em] text-zinc-300">
-              Talk or chat freely
-            </span>
+          
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex flex-col items-end mr-4">
+              <span className="text-xs font-semibold text-zinc-300">Live Expert System</span>
+              <span className="text-[10px] text-brand-500 font-medium">98.4% Accuracy</span>
+            </div>
+            <button className="rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20 border border-white/10 btn-shimmer">
+              Dashboard
+            </button>
           </div>
         </header>
 
-        <main className="grid flex-1 gap-6 lg:grid-cols-[1.8fr_1fr]">
-          <section className="rounded-[32px] bg-[#303134] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.25)]">
-            <div className="mb-5 flex items-center justify-between gap-4">
-              <div>
-                <p className="text-sm uppercase tracking-[0.24em] text-zinc-400">Active call</p>
-                <h2 className="text-3xl font-semibold">Live travel briefing</h2>
-              </div>
-              <div className="rounded-2xl bg-[#43474f] px-3 py-2 text-sm text-zinc-200">
-                12:24 PM • 7 participants
-              </div>
-            </div>
+        {/* Hero Section */}
+        <section className="mb-16 text-center max-w-3xl mx-auto animate-in fade-in duration-1000 delay-200">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-500 text-xs font-bold uppercase tracking-widest mb-8">
+            <Sparkles size={14} />
+            Experimental AI Discovery
+          </div>
+          <h2 className="text-5xl sm:text-7xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-linear-to-b from-white to-zinc-500">
+            Let&apos;s plan your next holiday together.
+          </h2>
+          <p className="text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto">
+            Forget about static forms. Chat or talk with Maya, our AI travel expert, to design your perfect getaway in real-time.
+          </p>
+        </section>
 
-            <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr]">
-              <div className="rounded-[28px] bg-[#202124] p-6 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]">
-                <div className="flex flex-wrap items-center gap-4">
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#8ab4f8] text-4xl">✈️</div>
-                  <div>
-                    <p className="text-sm uppercase tracking-[0.24em] text-zinc-400">Mascot</p>
-                    <h3 className="text-2xl font-semibold">Travel Enthusiast</h3>
-                  </div>
-                </div>
-                <div className="mt-6 space-y-4">
-                  <div className="rounded-3xl bg-[#3c4043] p-4 text-sm text-zinc-200">
-                    "Ready to explore the Philippines? I’ve got the perfect itinerary."
-                  </div>
-                  <div className="rounded-3xl bg-[#43474f] p-4 text-sm text-zinc-200">
-                    "Pack your bags — today’s highlight is a sunrise volcano trek."
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-[28px] bg-[#202124] p-6 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]">
-                <div className="mb-5 flex items-center justify-between">
-                  <h3 className="text-xl font-semibold">Call preview</h3>
-                  <span className="rounded-full bg-[#8ab4f8]/20 px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#8ab4f8]">
-                    Live
-                  </span>
-                </div>
-                <div className="grid gap-4">
-                  <div className="rounded-3xl bg-[#323438] p-4">
-                    <p className="text-sm text-zinc-400">Destination</p>
-                    <p className="mt-2 text-lg font-semibold">Philippines</p>
-                  </div>
-                  <div className="rounded-3xl bg-[#323438] p-4">
-                    <p className="text-sm text-zinc-400">Mood</p>
-                    <p className="mt-2 text-lg font-semibold">Adventure + Relaxation</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {[
-                { name: "Mia", status: "On mic" },
-                { name: "Kai", status: "Ready" },
-                { name: "Noah", status: "Off" },
-                { name: "Ava", status: "Ready" },
-              ].map((participant) => (
-                <div
-                  key={participant.name}
-                  className="rounded-3xl bg-[#2c2f33] p-4"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="h-12 w-12 rounded-full bg-[#5f6368] flex-none" />
-                    <div>
-                      <p className="text-base font-semibold">{participant.name}</p>
-                      <p className="text-sm text-zinc-500">{participant.status}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-col gap-3 rounded-[32px] bg-[#323438] p-5 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-sm text-zinc-400">Mascot prompt</p>
-                <p className="mt-2 text-lg font-medium">"Plan a weekend trip from Paris to Lisbon."</p>
-              </div>
-              <Link href="/meet" className="inline-flex items-center justify-center rounded-full bg-[#8ab4f8] px-5 py-3 text-sm font-semibold text-[#202124] transition hover:bg-[#a4c8ff]">
-                Start call
-              </Link>
-            </div>
-          </section>
-
-          <aside className="space-y-6">
-            <div className="rounded-[32px] bg-[#303134] p-6 shadow-[0_20px_40px_rgba(0,0,0,0.2)]">
-              <p className="text-sm uppercase tracking-[0.24em] text-zinc-400">Travel assistant</p>
-              <h3 className="mt-3 text-xl font-semibold">Milo the Mascot</h3>
-              <p className="mt-4 text-sm leading-6 text-zinc-300">
-                Feel free to talk to me about any destination — I’ll help you plan it, chat ideas, or talk through your next Philippines adventure.
-              </p>
-              <div className="mt-6 grid gap-3">
-                <div className="rounded-3xl bg-[#232528] p-4">
-                  <p className="text-sm text-zinc-400">Next idea</p>
-                  <p className="mt-2 font-semibold">Sunrise volcano hike</p>
-                </div>
-                <div className="rounded-3xl bg-[#232528] p-4">
-                  <p className="text-sm text-zinc-400">Local tip</p>
-                  <p className="mt-2 font-semibold">Beach cafes with live music</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-[32px] bg-[#303134] p-6 shadow-[0_20px_40px_rgba(0,0,0,0.2)]">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.24em] text-zinc-400">Travel stats</p>
-                  <h3 className="text-xl font-semibold">Call insights</h3>
-                </div>
-                <div className="rounded-full bg-[#5f6368] px-3 py-1 text-xs uppercase tracking-[0.18em] text-zinc-200">Live</div>
-              </div>
-              <div className="mt-5 space-y-4">
-                <div className="flex items-center justify-between rounded-3xl bg-[#232528] p-4">
-                  <span className="text-sm text-zinc-400">Destinations</span>
-                  <span className="font-semibold">8</span>
-                </div>
-                <div className="flex items-center justify-between rounded-3xl bg-[#232528] p-4">
-                  <span className="text-sm text-zinc-400">Suggestions</span>
-                  <span className="font-semibold">24</span>
-                </div>
-                <div className="flex items-center justify-between rounded-3xl bg-[#232528] p-4">
-                  <span className="text-sm text-zinc-400">Confidence</span>
-                  <span className="font-semibold">97%</span>
-                </div>
-              </div>
-            </div>
-          </aside>
+        {/* Main Application Area */}
+        <main className="flex-1">
+          <ConversationProvider>
+            <TripPlanner />
+          </ConversationProvider>
         </main>
+
+        {/* Footer Info */}
+        <footer className="mt-20 py-12 border-t border-white/5 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 animate-in slide-in-from-bottom-8 duration-1000">
+          {[
+            { icon: <Plane className="text-brand-500" />, title: "Discovery Mode", desc: "No destination? Maya helps you find the perfect spot based on your mood." },
+            { icon: <Navigation className="text-brand-300" />, title: "Live Updates", desc: "Watch your trip summary build itself as you talk through your ideas." },
+            { icon: <Globe className="text-brand-400" />, title: "Expert Handoff", desc: "Define the vision with AI, then finalize the details with a human travel pro." },
+            { icon: <Sparkles className="text-brand-200" />, title: "Premium Pricing", desc: "Get exclusive Travel Lykke rates and packages once your plan is ready." },
+          ].map((feature, i) => (
+            <div key={i} className="flex flex-col gap-4 p-6 rounded-3xl bg-white/5 border border-white/5 hover:border-white/10 transition-all hover:bg-white/[0.07]">
+              <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-2xl">
+                {feature.icon}
+              </div>
+              <h3 className="font-bold text-white tracking-wide">{feature.title}</h3>
+              <p className="text-sm text-zinc-500 leading-relaxed">{feature.desc}</p>
+            </div>
+          ))}
+        </footer>
+        
+        <div className="mt-12 mb-6 text-center">
+           <p className="text-[10px] uppercase tracking-[0.5em] text-zinc-600 font-bold">
+             Powered by ElevenLabs & Gemini 2.0 Flash
+           </p>
+        </div>
       </div>
     </div>
   );
