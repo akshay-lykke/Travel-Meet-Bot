@@ -161,14 +161,9 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --primary: var(--color-brand-500);
-
-  --primary-foreground: var(--color-brand-50);
-
-  --text-primary: var(--color-base-white);
-
   --primary-foreground: var(--color-base-white);
-
-  --primary-hover: var(--color-brand-600);
+  --text-primary: var(--color-gray-900);
+  --primary-hover: var(--color-brand-700);
 }
 
 html {
